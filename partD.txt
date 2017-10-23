@@ -1,0 +1,8 @@
+Come up with at least 3 different ways to provide the "censored words list" to the application.
+
+* Input at start of application in console using argv
+* ask user for input during application with Console.Read...   
+* List can be hardcoded into the application
+     
+* List can be got from another source
+ e.g. SQL query to a database

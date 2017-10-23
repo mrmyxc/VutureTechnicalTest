@@ -12,42 +12,6 @@ namespace Vuture.CodingTest
         static void Main(string[] args)
         {
 
-            /*
-             *Console.WriteLine(returnOccurences('e', "donuts are the best and the best"));
-             *Console.WriteLine(isPalindrome("Civic"));
-             *Console.WriteLine(isPalindrome("Anna"));
-             *Console.WriteLine(isPalindrome("Amy, must I jujitsu my ma?"));
-            
-
-            List<string> words = new List<string>();
-            words.Add("cat");
-            words.Add("dog");
-            words.Add("large");
-            string sentence = "I have a cat named Meow and a dog name Woof. I love the dog a lot. He is larger than a small horse.";
-
-            returnWordOccurences(words, sentence);
-            
-
-            List<string> anotherlist = new List<string>();
-            anotherlist.Add("meow");
-            anotherlist.Add("woof");
-            string anothersentence = "I have a cat named Meow and a dog name Woof. I love the dog a lot. He is larger than a small horse.";
-            Console.WriteLine(censorWordsinSentence(anotherlist, anothersentence));
-
-            List<string> breakdown = breakSentenceDown("I have. a cat named Meow.  .");
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < breakdown.Count; i ++)
-            {
-                sb.Append(breakdown[i]);
-            }
-            Console.WriteLine(sb.ToString());*/
-
-            Console.WriteLine(censorPalindromes("Anna went to vote in the election to fulfil her civic duty"));
-
-
-
-
-            Console.ReadKey();
         }
 
         /// <summary>
@@ -237,10 +201,4 @@ namespace Vuture.CodingTest
             return sb.ToString();
         }
     }
-
-    /*
-     * Console input at start of application
-     * ask user for input during application life
-     * 
-     */
 }
