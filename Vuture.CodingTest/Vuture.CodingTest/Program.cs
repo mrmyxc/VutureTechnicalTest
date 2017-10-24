@@ -23,33 +23,44 @@ namespace Vuture.CodingTest
         /// </summary>
         /// <param name="mString"></param>
         /// <returns></returns>
-        public static bool isPalindrome(string mString)
+        public bool isPalindrome(string text)
         {
-            StringBuilder newStringBuilder = new StringBuilder();
-
             /* create new string without punctuations and spaces */
-            foreach (char character in mString)
-            {
-                if (char.IsLetter(character))
-                {
-                    newStringBuilder.Append(character);
-                }
-            }
-            mString = newStringBuilder.ToString().ToLower();
+            text = removePunctuation(text).ToLower();
 
             /* checks if the ends of the string are equal with two cursors moving towards the center of the string 
              *returns false once the cursors aren't the same characters
              */
-            int iterations = mString.Length / 2;
-            int j = mString.Length - 1;
+            int iterations = text.Length / 2;
+            int j = text.Length - 1;
             for (int i = 0; i < iterations; i++, j--)
             {
-                if (mString[i] != mString[j])
+                if (text[i] != text[j])
                 {
                     return false;
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// returns a string with punctuation and white spaces removed
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        string removePunctuation (string text)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char character in text)
+            {
+                if (char.IsLetter(character))
+                {
+                    sb.Append(character);
+                }
+            }
+
+            return sb.ToString();
         }
     }
 
@@ -107,14 +118,15 @@ namespace Vuture.CodingTest
         /// </summary>
         /// <param name="mString"></param>
         /// <returns></returns>
-        public string censorPalindromes(string mString)
+        public string censorPalindromes(string text)
         {
+            PalindromeDetector palindromeDetector = new PalindromeDetector();
             StringBuilder sb = new StringBuilder();
-            List<string> words = Utils.breakSentenceDown(mString);
+            List<string> words = Utils.breakSentenceDown(text);
             int iterations = words.Count;
             for (int i = 0; i < iterations; i++)
             {
-                if (PalindromeDetector.isPalindrome(words[i]))
+                if (palindromeDetector.isPalindrome(words[i]))
                 {
                     words[i] = censorWord(words[i]);
                 }
@@ -134,40 +146,34 @@ namespace Vuture.CodingTest
         /// <param name="letter"></param>
         /// <param name="mString"></param>
         /// <returns></returns>
-        public int returnOccurences(char letter, string mString)
+        public int returnOccurences(char letter, string text)
         {
-            int occurences = 0;
-            foreach (char character in mString)
-            {
-                if (character == letter)
-                {
-                    ++occurences;
-                }
-            }
-            return occurences;
+            return text.Split(letter).Length - 1;
         }
 
         /// <summary>
         /// Task 3A
         /// counts the number of occurrences of words from a "censored words list" in a text and returns value in a dictionary
+        /// including as substrings
         /// </summary>
         /// <param name="list"></param>
         /// <param name="mString"></param>
         public Dictionary<string, int> returnWordOccurences(List<string> censoredWordsList, string text)
         {
-            /* initialise dictionary with keys and 0 occurences*/
+            /* initialise dictionary with keys and 0 occurences */
             Dictionary<string, int> dictionary = new Dictionary<string, int>();
-            foreach (string word in censoredWordsList)
-            {
-                dictionary.Add(word, 0);
-            }
-            List<string> listOfStrings = Utils.breakSentenceDown(text);
 
             foreach (string censoredWord in censoredWordsList)
             {
-                foreach (string word in listOfStrings)
+                dictionary.Add(censoredWord, 0);
+            }
+            List<string> words = Utils.breakSentenceDown(text);
+           
+            foreach (string censoredWord in censoredWordsList)
+            {
+                foreach (string word in words)
                 {
-                    if (censoredWord == word) dictionary[word]++;
+                    if (word == censoredWord || word.Contains(censoredWord)) dictionary[censoredWord]++;
                 }
             }
 

@@ -30,11 +30,13 @@ namespace UnitTests
         [TestMethod]
         public void PalindromeTest_True()
         {
+            PalindromeDetector palindromeDectector = new PalindromeDetector();
+
             string input = "A lad named E. Mandala";
 
             bool expectedOutput = true;
 
-            bool actualOutput = PalindromeDetector.isPalindrome(input);
+            bool actualOutput = palindromeDectector.isPalindrome(input);
 
             Assert.AreEqual(expectedOutput, actualOutput);
         }
@@ -42,11 +44,13 @@ namespace UnitTests
         [TestMethod]
         public void PalindromeTest_False()
         {
+            PalindromeDetector palindromeDetector = new PalindromeDetector();
+
             string input = "A lad namad E. Mandala";
 
             bool expectedOutput = false;
 
-            bool actualOutput = PalindromeDetector.isPalindrome(input);
+            bool actualOutput = palindromeDetector.isPalindrome(input);
 
             Assert.AreEqual(expectedOutput, actualOutput);
         }

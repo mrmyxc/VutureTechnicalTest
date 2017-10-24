@@ -18,7 +18,7 @@ namespace UnitTests
             string inputText = "I have a cat named Meow and a dog name Woof. I love the dog a lot. He is larger than a small horse.";
 
             Dictionary<string, int> expectedOutput = 
-                new Dictionary<string, int> { { "cat", 1 }, { "dog", 2 }, { "large", 0 } };
+                new Dictionary<string, int> { { "cat", 1 }, { "dog", 2 }, { "large", 1 } };
 
             Dictionary<string, int> actualOutput = counter.returnWordOccurences(inputCensoredList, inputText);
 
@@ -32,9 +32,9 @@ namespace UnitTests
 
             List<string> inputCensoredList = new List<string> { "meow", "woof" };
 
-            string inputText = "I have a cat named Meow and a dog name Woof. I love the dog a lot. He is larger than a small horse.";
+            string inputText = "I have a cat named Meow and a dog named Woof. I love the dog a lot. He is larger than a small horse.";
 
-            string expectedOutput = "I have a cat named M$$w and a dog name W$$f. I love the dog a lot. He is larger than a small horse.";
+            string expectedOutput = "I have a cat named M$$w and a dog named W$$f. I love the dog a lot. He is larger than a small horse.";
 
             string actualOutput = censor.censorWordsinSentence(inputCensoredList, inputText);
 
