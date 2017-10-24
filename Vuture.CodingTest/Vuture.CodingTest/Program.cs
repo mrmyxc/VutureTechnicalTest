@@ -148,7 +148,14 @@ namespace Vuture.CodingTest
         /// <returns></returns>
         public int returnOccurences(char letter, string text)
         {
-            return text.Split(letter).Length - 1;
+            int occurences = 0;
+
+            foreach (char c in text)
+            {
+                if (c == letter) occurences++;
+            }
+
+            return occurences;
         }
 
         /// <summary>
