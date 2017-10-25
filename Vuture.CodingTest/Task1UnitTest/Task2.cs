@@ -2,28 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Vuture.CodingTest;
 
-namespace UnitTests
+namespace Task1UnitTest
 {
-    [TestClass]
-    public class Task1
-    {
-        [TestMethod]
-        public void numberOfOccurencesTest()
-        {
-            Counter counter = new Counter();
-
-            char inputChar = 'e';
-
-            string inputText = "I have some cheese";
-
-            int expectedOutput = 5;
-
-            int actualOutput = counter.returnOccurences(inputChar, inputText);
-
-            Assert.AreEqual(expectedOutput, actualOutput);
-        }
-    }
-
     [TestClass]
     public class Task2
     {

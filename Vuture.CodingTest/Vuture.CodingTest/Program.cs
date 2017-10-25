@@ -25,6 +25,10 @@ namespace Vuture.CodingTest
         /// <returns></returns>
         public bool isPalindrome(string text)
         {
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
             /* create new string without punctuations and spaces */
             text = removePunctuation(text).ToLower();
 
@@ -48,7 +52,7 @@ namespace Vuture.CodingTest
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        string removePunctuation (string text)
+        private string removePunctuation (string text)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -75,6 +79,12 @@ namespace Vuture.CodingTest
         /// <returns></returns>
         public string censorWordsinSentence(List<string> censoredWordsList, string text)
         {
+            
+            /* null/empty string and list check */
+            if (string.IsNullOrEmpty(text) || !censoredWordsList.Any<string>())
+            {
+                return text;
+            }
             StringBuilder sb = new StringBuilder();
             List<string> words = Utils.breakSentenceDown(text);
 
@@ -102,7 +112,7 @@ namespace Vuture.CodingTest
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        string censorWord(string word)
+        private string censorWord(string word)
         {
             char[] newString = word.ToCharArray();
             for (int i = 1; i < word.Length - 1; i++)
@@ -120,6 +130,10 @@ namespace Vuture.CodingTest
         /// <returns></returns>
         public string censorPalindromes(string text)
         {
+            if (string.IsNullOrEmpty(text))
+            {
+                return text;
+            }
             PalindromeDetector palindromeDetector = new PalindromeDetector();
             StringBuilder sb = new StringBuilder();
             List<string> words = Utils.breakSentenceDown(text);
@@ -148,6 +162,10 @@ namespace Vuture.CodingTest
         /// <returns></returns>
         public int returnOccurences(char letter, string text)
         {
+            if (string.IsNullOrEmpty(text))
+            {
+                return 0;
+            }
             int occurences = 0;
 
             foreach (char c in text)
@@ -167,6 +185,11 @@ namespace Vuture.CodingTest
         /// <param name="mString"></param>
         public Dictionary<string, int> returnWordOccurences(List<string> censoredWordsList, string text)
         {
+            /* null/empty string and list check */
+            if (string.IsNullOrEmpty(text) || !censoredWordsList.Any<string>())
+            {
+                return null;
+            }
             /* initialise dictionary with keys and 0 occurences */
             Dictionary<string, int> dictionary = new Dictionary<string, int>();
 
